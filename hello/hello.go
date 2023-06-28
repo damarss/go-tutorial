@@ -20,7 +20,7 @@ func main() {
 
 	var message string
 	var err error
-	message, err = greetings.Hello("")
+	message, err = greetings.Hello("Hydra")
 
 	// if an error was returned, print it to the console and
 	// exit the program.
@@ -29,4 +29,15 @@ func main() {
 	}
 
 	fmt.Println(message)
+
+	names := []string{"Gladys", "Samantha", "Darrin"}
+	messages, err := greetings.Hellos(names)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for k, v := range messages {
+		fmt.Printf("%v: %v\n", k, v)
+	}
 }
