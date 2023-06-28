@@ -1,15 +1,32 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
+	"log"
 
-    "golang.org/x/example/stringutil"
-    "com.example/greetings"
+	"com.example/greetings"
+	// "golang.org/x/example/stringutil"
 )
 
 func main() {
-    fmt.Println(stringutil.Reverse("Hello"))
-    var message string
-    message = greetings.Hello("Gladys")
-    fmt.Println(message)
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	// set flag to  0 to hide the time, source file, and line number
+	log.SetFlags(0)
+
+	// fmt.Println(stringutil.Reverse("Hello"))
+
+	var message string
+	var err error
+	message, err = greetings.Hello("")
+
+	// if an error was returned, print it to the console and
+	// exit the program.
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(message)
 }
